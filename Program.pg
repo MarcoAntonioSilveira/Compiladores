@@ -1,0 +1,7 @@
+program task2;
+var a: integer;
+var b: integer;
+a:=2
+begin
+if (a=2) then b:=10
+end

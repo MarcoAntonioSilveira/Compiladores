@@ -1,0 +1,79 @@
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
+
+
+parser code {:
+    public void report_error(String message, Object info)  {
+        System.out.println(message);
+    }
+
+    public void report_fatal_error(String message, Object info)  {
+        System.out.println(message);
+        System.exit(-1);
+    }
+:};
+
+
+terminal IF, THEN, ELSE, DO, WHILE, UNTIL, READ, WRITE, FALSE, TRUE;
+terminal INTEGER_CONST, REAL_CONST, CHAR_CONST, IDENTIFIER;
+terminal PROGRAM, INTEGER, REAL, BOOLEAN, CHAR, BEGIN, END, LEFT_PAR, RIGHT_PAR;
+terminal ADDOP, RELOP, ASSIGN, MULOP, SEMI, COLON, COMMA, MINUS;
+
+non terminal  program, decl_list, decl, ident_list, compound_stmt, stmt_list;
+non terminal  stmt, assign_stmt, if_stmt, cond, loop_stmt, stmt_prefix, stmt_suffix;
+non terminal  read_stmt, write_stmt, expr_list, expr, simple_expr, term, factor_a;
+non terminal  factor, constant, boolean_constant, type;
+
+
+
+start with program;
+
+
+program ::= PROGRAM IDENTIFIER SEMI decl_list compound_stmt ;
+
+decl_list ::= decl_list  SEMI decl | decl ;
+
+decl ::= ident_list COLON type ;
+
+ident_list ::= ident_list  COMMA IDENTIFIER | IDENTIFIER ;
+
+type ::= INTEGER | REAL | BOOLEAN | CHAR ;
+
+compound_stmt ::= BEGIN stmt_list END ;
+
+stmt_list ::= stmt_list SEMI stmt | stmt ;
+
+stmt ::= assign_stmt | if_stmt | loop_stmt | read_stmt | write_stmt | compound_stmt ;
+
+assign_stmt ::= IDENTIFIER ASSIGN expr ;
+
+if_stmt ::= IF cond THEN stmt | IF cond THEN stmt ELSE stmt ;
+
+cond ::= expr ;
+
+loop_stmt ::= stmt_prefix DO stmt_list stmt_suffix ;
+
+stmt_prefix ::= WHILE cond |  ;
+
+stmt_suffix ::= UNTIL cond | END ;
+
+read_stmt ::= READ LEFT_PAR ident_list RIGHT_PAR ;
+
+write_stmt ::= WRITE  LEFT_PAR expr_list RIGHT_PAR ;
+
+expr_list ::= expr | expr_list COMMA expr ;
+
+expr ::= simple_expr | simple_expr RELOP simple_expr ;
+
+simple_expr ::= term | simple_expr ADDOP term ;
+
+term ::= factor_a | term MULOP factor_a ;
+
+factor_a ::= MINUS factor | factor ;
+
+factor ::= IDENTIFIER | constant | LEFT_PAR expr RIGHT_PAR | RELOP factor ;
+
+constant ::= INTEGER_CONST | REAL_CONST | CHAR_CONST | boolean_constant ;
+
+boolean_constant ::= FALSE | TRUE ;
