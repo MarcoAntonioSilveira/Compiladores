@@ -6,38 +6,39 @@
 /** CUP generated class containing symbol constants. */
 public class Sym {
   /* terminals */
-  public static final int ADDOP = 25;
+  public static final int ADDOP = 17;
   public static final int READ = 8;
-  public static final int RELOP = 26;
+  public static final int RELOP = 28;
   public static final int ELSE = 4;
   public static final int THEN = 3;
-  public static final int SEMI = 29;
-  public static final int CHAR = 20;
+  public static final int SEMI = 30;
+  public static final int CHAR = 23;
   public static final int INTEGER_CONST = 12;
   public static final int WHILE = 6;
-  public static final int END = 22;
-  public static final int IDENTIFIER = 15;
+  public static final int NOT = 15;
+  public static final int END = 25;
+  public static final int IDENTIFIER = 16;
   public static final int TRUE = 11;
   public static final int IF = 2;
-  public static final int COLON = 30;
-  public static final int MULOP = 28;
+  public static final int COLON = 31;
+  public static final int MULOP = 18;
   public static final int WRITE = 9;
-  public static final int PROGRAM = 16;
-  public static final int BEGIN = 21;
+  public static final int PROGRAM = 19;
+  public static final int BEGIN = 24;
   public static final int DO = 5;
-  public static final int BOOLEAN = 19;
-  public static final int LEFT_PAR = 23;
-  public static final int COMMA = 31;
+  public static final int BOOLEAN = 22;
+  public static final int LEFT_PAR = 26;
+  public static final int COMMA = 32;
   public static final int EOF = 0;
-  public static final int RIGHT_PAR = 24;
+  public static final int RIGHT_PAR = 27;
   public static final int REAL_CONST = 13;
-  public static final int MINUS = 32;
+  public static final int MINUS = 33;
   public static final int FALSE = 10;
   public static final int error = 1;
-  public static final int ASSIGN = 27;
+  public static final int ASSIGN = 29;
   public static final int UNTIL = 7;
-  public static final int INTEGER = 17;
-  public static final int REAL = 18;
+  public static final int INTEGER = 20;
+  public static final int REAL = 21;
   public static final int CHAR_CONST = 14;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -55,7 +56,10 @@ public class Sym {
   "INTEGER_CONST",
   "REAL_CONST",
   "CHAR_CONST",
+  "NOT",
   "IDENTIFIER",
+  "ADDOP",
+  "MULOP",
   "PROGRAM",
   "INTEGER",
   "REAL",
@@ -65,10 +69,8 @@ public class Sym {
   "END",
   "LEFT_PAR",
   "RIGHT_PAR",
-  "ADDOP",
   "RELOP",
   "ASSIGN",
-  "MULOP",
   "SEMI",
   "COLON",
   "COMMA",

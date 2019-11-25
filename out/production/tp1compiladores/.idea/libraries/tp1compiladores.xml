@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="tp1compiladores">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/java-cup-11b.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jflex-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tp1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/java-cup-11b-runtime.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

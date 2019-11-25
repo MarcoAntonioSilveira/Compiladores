@@ -1,3 +1,5 @@
+package comp1;
+
 import java_cpu.runtime.Symbol;
 
 %%
@@ -15,7 +17,7 @@ UnsignedInt 		= {Digit}+
 Sign 						= \+ | \- | _
 ScaleFactor 		= [E] {Sign} {UnsignedInt}
 UnsignedReal	 	= {UnsignedInt} (_ | \. | {Digit}*(_ | {ScaleFactor}))
-IntegerConstant = {UnsignedInt}
+IntegerConstant = {UnsignedInteger}
 RealConstant 		= {UnsignedReal}
 CharConstant 		= [^\r\n]
 
