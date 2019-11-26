@@ -5,13 +5,13 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            lexicalAnalyzer = new LexicalAnalyzer(new FileReader("Program.pg"));
+            lexicalAnalyzer = new LexicalAnalyzer(new FileReader("input.txt"));
             Parser p = new Parser(lexicalAnalyzer);
             p.parse();
             if (Parser.errors == 0) {
                 try {
                     PrintWriter file;
-                    file = new PrintWriter(new FileOutputStream("output.s"));
+                    file = new PrintWriter(new FileOutputStream("output.txt"));
                     file.println(Parser.code);
                     file.flush();
                     file.close();
@@ -21,7 +21,7 @@ public class Main {
                 }
             }
             else
-               System.out.println("Nenhum código intermediário produzido. Erros encontrados");
+               System.out.println("Nenhum assembly produzido. Erros encontrados");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -764,19 +764,19 @@ public class LexicalAnalyzer implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { return symbol(Sym.CHAR_CONST);
+            { return symbol(Sym.CHAR_CONST, yytext());
             }
           case 34: break;
           case 2: 
-            { return symbol(Sym.IDENTIFIER);
+            { return symbol(Sym.IDENTIFIER, yytext());
             }
           case 35: break;
           case 3: 
-            { return symbol(Sym.INTEGER_CONST);
+            { return symbol(Sym.INTEGER_CONST, yytext());
             }
           case 36: break;
           case 4: 
-            { return symbol(Sym.ADDOP);
+            { return symbol(Sym.ADDOP, yytext());
             }
           case 37: break;
           case 5: 
@@ -788,11 +788,11 @@ public class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 39: break;
           case 7: 
-            { return symbol(Sym.MULOP);
+            { return symbol(Sym.MULOP, yytext());
             }
           case 40: break;
           case 8: 
-            { return symbol(Sym.RELOP);
+            { return symbol(Sym.RELOP, yytext());
             }
           case 41: break;
           case 9: 
@@ -816,7 +816,7 @@ public class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 46: break;
           case 14: 
-            { return symbol(Sym.REAL_CONST);
+            { return symbol(Sym.REAL_CONST, yytext());
             }
           case 47: break;
           case 15: 
@@ -832,7 +832,7 @@ public class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 50: break;
           case 18: 
-            { return symbol(Sym.NOT);
+            { return symbol(Sym.NOT, yytext());
             }
           case 51: break;
           case 19: 
@@ -848,7 +848,7 @@ public class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 54: break;
           case 22: 
-            { return symbol(Sym.TRUE);
+            { return symbol(Sym.TRUE, yytext());
             }
           case 55: break;
           case 23: 
@@ -868,7 +868,7 @@ public class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 59: break;
           case 27: 
-            { return symbol(Sym.FALSE);
+            { return symbol(Sym.FALSE, yytext());
             }
           case 60: break;
           case 28: 

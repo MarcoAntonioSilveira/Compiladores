@@ -1,0 +1,10 @@
+	 ST #4 , a
+	 ST #2 , b
+	 LD a , R0
+	 ADD R0 , #2 , R0 
+	 ST R0 , c
+	 LD c , R0
+	 ST #10 , b
+	 HLT 
+
+

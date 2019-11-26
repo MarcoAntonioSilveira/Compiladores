@@ -1,0 +1,10 @@
+program teste1;
+a, b, c : integer
+begin
+    a := 4;
+    b := 2;
+    c := a + 2;
+    
+    if c = 8 then
+	    b := 10
+end

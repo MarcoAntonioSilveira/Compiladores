@@ -127,7 +127,7 @@ non terminal  List<String> ident_list, stmt_prefix, stmt_suffix;
 start with program;
 
 
-program ::= PROGRAM id SEMI decl_list compound_stmt {:
+program ::= PROGRAM id:x SEMI decl_list compound_stmt {:
     parser.code.append("\t HLT \n\n");
 :};
 
@@ -141,12 +141,12 @@ decl ::= ident_list:il COLON type:tp {:
     }
 :};
 
-ident_list ::= ident_list:il COMMA IDENTIFIER:id {:
+ident_list ::= ident_list:il COMMA id:id {:
     il.add(id.toString().toLowerCase());
     RESULT = il;
-:} | IDENTIFIER:id {:
+:} | id:id {:
     List<String> il = new ArrayList<String>();
-    il.add(id.toString().toLowerCase());
+    il.add(id.toLowerCase());
     RESULT = il;
 :};
 
@@ -320,14 +320,14 @@ term ::= factor_a:f {:
             if((smp_exp.tipo.getVal().equals("integer") || smp_exp.tipo.getVal().equals("real")) &&
               (f.tipo.getVal().equals("integer") || f.tipo.getVal().equals("real"))) {
                 String op = assembOp(ad.toString().toLowerCase());
-            if(smp_exp.isConstant) {
-                parser.code.append("\t "+op+" "+smp_exp.code+" , "+f.code+" , R1\n");
-                smp_exp.code = "R1";
-            }
-            else {
-                parser.code.append("\t "+op+" "+smp_exp.code+" , "+f.code+" ,  "+smp_exp.code+"\n");
-            }
-                RESULT = new Exp(Tipo.maximo(smp_exp.tipo, f.tipo), smp_exp.code);
+                if(smp_exp.isConstant) {
+                    parser.code.append("\t "+op+" "+smp_exp.code+" , "+f.code+" , R1\n");
+                    smp_exp.code = "R1";
+                }
+                else {
+                    parser.code.append("\t "+op+" "+smp_exp.code+" , "+f.code+" ,  "+smp_exp.code+"\n");
+                }
+                    RESULT = new Exp(Tipo.maximo(smp_exp.tipo, f.tipo), smp_exp.code);
             }
             else {
                 parser.semantic_error(smp_exp.tipo.getVal() + " , " + f.tipo.getVal(), "The operator "+ad+" is undefined for the argument types ");
@@ -392,7 +392,7 @@ constant ::= INTEGER_CONST:ic {: RESULT = new Exp(Tipo.getTipo(Tipo.INTEGER), ic
 boolean_constant ::= FALSE {: RESULT = new Exp(Tipo.getTipo(Tipo.BOOLEAN), "0"); :}
     | TRUE {: RESULT = new Exp(Tipo.getTipo(Tipo.BOOLEAN), "1"); :};
 
-identifier ::= id:id {:
+identifier ::= IDENTIFIER:id {:
     Simbolo t = null;
     if((t = TabelaDeSimbolos.get(id.toLowerCase())) == null) {
         parser.semantic_error(id.toString(), "unknow name");

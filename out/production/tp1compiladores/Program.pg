@@ -1,5 +1,0 @@
-program t;
-a : integer
-begin
-    a := 4;
-end

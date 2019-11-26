@@ -51,23 +51,23 @@ CharConstant 		    = [^\r\n]
     "\t"            {}
     "program"       { return symbol(Sym.PROGRAM); }
 
-	"+" 			{ return symbol(Sym.ADDOP); }
-	"-" 			{ return symbol(Sym.ADDOP); }
-	"or" 			{ return symbol(Sym.ADDOP); }
+	"+" 			{ return symbol(Sym.ADDOP, yytext()); }
+	"-" 			{ return symbol(Sym.ADDOP, yytext()); }
+	"or" 			{ return symbol(Sym.ADDOP, yytext()); }
 
-	"*" 			{ return symbol(Sym.MULOP); }
-	"/" 			{ return symbol(Sym.MULOP); }
-	"div" 		    { return symbol(Sym.MULOP); }
-	"mod" 		    { return symbol(Sym.MULOP); }
-	"and" 		    { return symbol(Sym.MULOP); }
+	"*" 			{ return symbol(Sym.MULOP, yytext()); }
+	"/" 			{ return symbol(Sym.MULOP, yytext()); }
+	"div" 		    { return symbol(Sym.MULOP, yytext()); }
+	"mod" 		    { return symbol(Sym.MULOP, yytext()); }
+	"and" 		    { return symbol(Sym.MULOP, yytext()); }
 
-	"=" 			{ return symbol(Sym.RELOP); }
-	"<" 			{ return symbol(Sym.RELOP); }
-	">" 			{ return symbol(Sym.RELOP); }
-	"<=" 			{ return symbol(Sym.RELOP); }
-	">=" 			{ return symbol(Sym.RELOP); }
-	"!=" 			{ return symbol(Sym.RELOP); }
-	"not" 		    { return symbol(Sym.NOT); }
+	"=" 			{ return symbol(Sym.RELOP, yytext()); }
+	"<" 			{ return symbol(Sym.RELOP, yytext()); }
+	">" 			{ return symbol(Sym.RELOP, yytext()); }
+	"<=" 			{ return symbol(Sym.RELOP, yytext()); }
+	">=" 			{ return symbol(Sym.RELOP, yytext()); }
+	"!=" 			{ return symbol(Sym.RELOP, yytext()); }
+	"not" 		    { return symbol(Sym.NOT, yytext()); }
 
 	","				{ return symbol(Sym.COMMA); }
 	";"				{ return symbol(Sym.SEMI); }
@@ -88,8 +88,8 @@ CharConstant 		    = [^\r\n]
 
 	"read"		    { return symbol(Sym.READ); }
 	"write"		    { return symbol(Sym.WRITE); }
-	"true"		    { return symbol(Sym.TRUE); }
-	"false"		    { return symbol(Sym.FALSE); }
+	"true"		    { return symbol(Sym.TRUE, yytext()); }
+	"false"		    { return symbol(Sym.FALSE, yytext()); }
 	"write"		    { return symbol(Sym.WRITE); }
 	":="	        { return symbol(Sym.ASSIGN); }
 
@@ -98,10 +98,10 @@ CharConstant 		    = [^\r\n]
 	"integer"       { return symbol(Sym.INTEGER); }
 	"char"          { return symbol(Sym.CHAR); }
 
-	{Identifier} 		{ return symbol(Sym.IDENTIFIER); }
-	{IntegerConstant}	{ return symbol(Sym.INTEGER_CONST); }
-	{CharConstant}		{ return symbol(Sym.CHAR_CONST); }
-	{RealConstant}		{ return symbol(Sym.REAL_CONST); }
+	{Identifier} 		{ return symbol(Sym.IDENTIFIER, yytext()); }
+	{IntegerConstant}	{ return symbol(Sym.INTEGER_CONST, yytext()); }
+	{CharConstant}		{ return symbol(Sym.CHAR_CONST, yytext()); }
+	{RealConstant}		{ return symbol(Sym.REAL_CONST, yytext()); }
 
 }
 <<EOF>> 	{ return symbol(Sym.EOF); }
